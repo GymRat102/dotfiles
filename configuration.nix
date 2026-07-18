@@ -34,6 +34,7 @@
         # onActivation.extraFlags = [ "--force" ]
 
         brews = [
+            "git-delta" # used by lazygit for better diff
             "herdr"
         ];
         casks = [

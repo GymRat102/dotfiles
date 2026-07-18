@@ -23,7 +23,9 @@ copy_mode = "prefix+y"
 [[keys.command]]
 key = "prefix+l"
 type = "popup"
-command = "lazygit"
+command = "lazygit --use-config-file ~/.config/lazygit/config.yml" # add --use-config-file because somehow
+                                                                   # herdr popup pane doesn't pick up $XDG_CONFIG_HOME
+                                                                   # so lazygit doesn't automatically pick up config file
 description = "run lazygit"
 width = "93%"
 height = "93%"
