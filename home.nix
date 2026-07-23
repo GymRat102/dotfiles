@@ -56,7 +56,7 @@ in
     enableZshIntegration = false;
 
     settings = {
-      add_newline = false;
+      add_newline = true;
 
       directory = {
         truncation_length = 0;
