@@ -50,6 +50,44 @@ in
   # fonts.fontconfig.enable = true;
   # home.sessionVariables.EDITOR = "nvim";
 
+  programs.starship = {
+    enable = true;
+
+    enableZshIntegration = false;
+
+    settings = {
+      add_newline = false;
+
+      directory = {
+        truncation_length = 0;
+        truncate_to_repo = false;
+        style = "bold blue";
+      };
+
+      git_status = {
+        conflicted = "=$count ";
+        ahead = "⇡$count ";
+        behind = "⇣$count ";
+        diverged = "⇕⇡$ahead_count⇣$behind_count ";
+        up_to_date = "✓ ";
+        untracked = "?$count ";
+        stashed = "S$count ";
+        modified = "!$count ";
+        staged = "+$count ";
+        renamed = "»$count ";
+        deleted = "-$count ";
+
+        format = "([$all_status$ahead_behind]($style) )";
+        style = "bold yellow";
+      };
+
+      character = {
+        success_symbol = "[>](bold green)";
+        error_symbol = "[>](bold red)";
+      };
+    };
+  };
+
   # Edit-in-place: the real life stays in my repo, ~/.config just points at it.
   home.file.".config/wezterm".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/wezterm";
