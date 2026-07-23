@@ -22,38 +22,104 @@ in
   #   nerd-fonts.hack
   # ];
 
-  #### home-manager is gonna take over zsh for me
-  #### use when ready
-  # programs.zsh {
-  #   enable = true;
-  #   autosuggestion.enable = true;   # ghost text from history
-  #   syntaxhighlighting.enable = true;   # commands turn green when valid
-  #   initContent = ''
-  #     bindkey '^f' autosuggest-accept
-  #   '';
-  #   shellAliases = {
-  #     ".." = "cd ..";
-  #     add = "git add .";
-  #     push = "git push";
-  #     pull = "git pull";
-  #     m = "git switch main";
-  #     cc = "claude --gangerously-skip-permissions";
-  #     co = "codex --full-auto";
-  #   };
-  # };
+  #### home-manager will generate zsh files based on below config
+  programs.zsh = {
+    enable = true;
 
-  # programs.git.settings.user = {
-  #   name = "weijianduan";
-  #   email = "weijianduan0302@gmail.com";
-  # };
+    enableCompletion = true;
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
 
-  # fonts.fontconfig.enable = true;
-  # home.sessionVariables.EDITOR = "nvim";
+    profileExtra = ''
+      eval "$(/opt/homebrew/bin/rbenv init - --no-rehash zsh)"
+    '';
+
+    initContent = ''
+      bindkey '^f' autosuggest-accept # tab accept auto-suggest
+
+      # history
+      HISTFILE="$HOME/.zsh_history"
+      HISTSIZE=1000000
+      SAVEHIST=1000000
+      setopt share_history
+      setopt extended_history
+      setopt hist_verify
+
+      # Emacs-style line editing
+      bindkey -e
+
+      # 输入部分命令后，用 ↑ / ↓ 搜索对应历史
+      bindkey "^[[A" history-search-backward
+      bindkey "^[[B" history-search-forward
+
+      # Ctrl-X Ctrl-E：用 $EDITOR 编辑当前命令行
+      autoload -Uz edit-command-line
+      zle -N edit-command-line
+      bindkey "^X^E" edit-command-line
+
+      export SDKMAN_DIR="$HOME/.sdkman"
+      [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+    '';
+
+    shellAliases = {
+      vim = "nvim";
+      vi = "nvim";
+
+      python = "python3";
+      pip = "pip3";
+
+      # basics
+      l = "ls -alFh";
+      ".." = "cd ..";
+      cd = "z";
+
+      # git
+      add = "git add .";
+      push = "git push";
+      pull = "git pull";
+      m = "git switch main";
+
+      # agent
+      cc = "claude --dangerously-skip-permissions";
+      co = "codex --full-auto";
+    };
+  };
+
+  home.sessionVariables = {
+    EDITOR = "nvim";
+    VISUAL = "nvim";
+  };
+
+  home.sessionPath = [
+    "$HOME/.cargo/bin"
+    "$HOME/.amp/bin"
+
+    "/Applications/IntelliJ IDEA.app/Contents/MacOS"
+    "/usr/local/mysql-9.2.0-macos15-arm64/bin/"
+  ];
+
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
+  programs.git = {
+    enable = true;
+
+    settings = {
+      user = {
+        name = "weijianduan";
+        email = "weijianduan0302@gmail.com";
+      };
+
+      init.defaultBranch = "main";
+    };
+  };
 
   programs.starship = {
     enable = true;
 
-    enableZshIntegration = false;
+    enableZshIntegration = true;
 
     settings = {
       add_newline = true;

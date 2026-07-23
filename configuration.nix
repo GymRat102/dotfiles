@@ -42,12 +42,14 @@
             "zoxide" # better cd
             "emacs" # secondary editor than vim
             "neovim" # modern vim
-            "python@3.14"
-            "kimi-code"
+            "python@3.14" # python
+            "kimi-code" # kimi coding agent
+            "rbenv" # ruby version manager
         ];
         casks = [
             "wezterm"
             "stats"
+            "claude-code"
         ];
     };
 }
