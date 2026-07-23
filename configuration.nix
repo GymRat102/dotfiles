@@ -30,12 +30,20 @@
         enable = true;
 
         onActivation.cleanup = "none"; # `zap` remove anything not listed here
-        onActivation.autoUpdate = true;
-        # onActivation.extraFlags = [ "--force" ]
+        onActivation.autoUpdate = true; # update homebrew index
+        onActivation.upgrade = false; # but don't update software
 
         brews = [
             "git-delta" # used by lazygit for better diff
-            "herdr"
+            "herdr" # modern agentic tmux
+            "fx" # terminal json viewer
+            "zsh-autosuggestions" # zsh plugin
+            "zsh-syntax-highlighting" # zsh plugin
+            "zoxide" # better cd
+            "emacs" # secondary editor than vim
+            "neovim" # modern vim
+            "python@3.14"
+            "kimi-code"
         ];
         casks = [
             "wezterm"
