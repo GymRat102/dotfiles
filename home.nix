@@ -30,6 +30,13 @@ in
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
 
+    plugins = [
+      {
+        name = "prompt-spacing";
+        src = ./home/.config/zsh/plugins/prompt-spacing;
+      }
+    ];
+
     profileExtra = ''
       eval "$(/opt/homebrew/bin/rbenv init - --no-rehash zsh)"
     '';
@@ -122,7 +129,7 @@ in
     enableZshIntegration = true;
 
     settings = {
-      add_newline = true;
+      add_newline = false;
 
       directory = {
         truncation_length = 0;
