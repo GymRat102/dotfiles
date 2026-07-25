@@ -1,8 +1,59 @@
 return {
   {
-    'stevearc/oil.nvim',
-    opts = { view_options = { show_hidden = true } },
-    keys = { { '<leader>e', '<cmd>Oil<cr>', desc = 'File Browser' } },
+    "nvim-tree/nvim-tree.lua",
+    lazy = false,
+    init = function()
+      -- Must happen before netrw loads
+      vim.g.loaded_netrw = 1
+      vim.g.loaded_netrwPlugin = 1
+    end,
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
+    keys = {
+      { "<leader>ee", "<cmd>NvimTreeToggle<CR>", desc = "Toggle file explorer" },
+      { "<leader>ef", "<cmd>NvimTreeFindFileToggle<CR>", desc = "Toggle file explorer on current file" }
+    },
+    opts = {
+      view = {
+        width = 35,
+        side = "left",
+      },
+      renderer = {
+        group_empty = true,
+        icons = {
+          show = {
+            git = true,
+          },
+          glyphs = {
+            git = {
+              unstaged  = "●",
+              staged    = "✓",
+              unmerged  = "",
+              renamed   = "➜",
+              untracked = "+",
+              deleted   = "-",
+              ignored   = "◌",
+            }
+          }
+        }
+      },
+      filters = {
+        dotfiles = false,
+        git_ignored = false,
+      },
+    },
+    config = function(_, opts)
+      require("nvim-tree").setup(opts)
+      vim.api.nvim_create_autocmd("VimEnter", {
+        callback = function(data)
+          -- Only open if Neovim was started with a directory
+          if vim.fn.isdirectory(data.file) == 1 then
+            require("nvim-tree.api").tree.open()
+          end
+        end,
+      })
+    end,
   },
   {
     "folke/snacks.nvim",
