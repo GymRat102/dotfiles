@@ -63,6 +63,8 @@
             "mole" # tw93's awesome mac storage cleaner
             "llm" # simon willison's cli llm
             "tree" # print cli dir tree
+            "ripgrep" # text search dependency
+            "lazygit" # git in cli
         ];
         casks = [
             # utilities
