@@ -23,11 +23,11 @@
           show-recents = false;
 
           persistent-apps = [
-            { app = "/Applications/ChatGPT.app"; }
+            # { app = "/Applications/ChatGPT.app"; }
 
             { spacer = { small = true; }; }
 
-            { app = "/Applications/Obsidian.app"; }
+            # { app = "/Applications/Obsidian.app"; }
             { app = "/Applications/WezTerm.app"; }
           ];
 
