@@ -21,7 +21,7 @@
         dock = {
           orientation = "left";
           autohide = false;
-          tilesize = 48;
+          tilesize = 40;
           show-recents = false;
 
           persistent-apps = [

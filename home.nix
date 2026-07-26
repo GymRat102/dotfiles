@@ -172,6 +172,8 @@ in
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/lazygit";
   home.file.".config/karabiner".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/karabiner";
+  home.file.".snipaste/config.ini".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.snipaste/config.ini";
 
   # Global AGENTS.md
   # home.file.".claude/CLAUDE.md".source =
