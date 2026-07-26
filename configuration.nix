@@ -19,7 +19,7 @@
         # };
 
         dock = {
-          autohide = false;
+          autohide = true;
           show-recents = false;
 
           persistent-apps = [
