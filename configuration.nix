@@ -14,13 +14,20 @@
     system.stateVersion = 6;
 
     system.defaults = {
-        # NSGlobalDomain = {
-        #     AppleInterfaceStyle = "Dark";
-        # };
+        NSGlobalDomain = {
+            # AppleInterfaceStyle = "Dark";
+            KeyRepeat = 2;
+            InitialKeyRepeat = 30;
+            ApplePressAndHoldEnabled = false;
+        };
 
         WindowManager = {
           StandardHideWidgets = true;
           StageManagerHideWidgets = true;
+        };
+
+        finder = {
+          FXPreferredViewStyle = "clmv";
         };
 
         dock = {
@@ -29,21 +36,33 @@
           tilesize = 40;
           show-recents = false;
 
+          persistent-others = [];
+
           persistent-apps = [
-            # { app = "/Applications/ChatGPT.app"; }
+            { app = "/Applications/EuDic.app"; }
+            { app = "/Applications/TickTick.app"; }
+            { app = "/Applications/Lark.app"; }
 
             { spacer = { small = true; }; }
 
-            # { app = "/Applications/Obsidian.app"; }
+            { app = "/Applications/Obsidian.app"; }
+            { app = "/Applications/Google Chrome.app"; }
+
+            { spacer = { small = true; }; }
+
             { app = "/Applications/WezTerm.app"; }
-
-            { spacer = { small = true; }; }
+            { app = "/Applications/ChatGPT.app"; }
+            { app = "/Applications/ChatGPT Classic.app"; }
           ];
 
         };
 
         trackpad.Clicking = true;          # tap to click
     };
+
+    system.activationScripts.postActivation.text = ''
+      /usr/bin/sudo -u ${user} /usr/bin/killall Dock || true
+    '';
 
     nix-homebrew = {
         enable = true;
@@ -80,19 +99,22 @@
             "rectangle"
             "hiddenbar"
             "snipaste"
-            # "raycast"
+            "raycast"
 
             # devtool
             "wezterm"
             # "claude-code"
-            # "codexbar"
-            # "codex"
-            # "chatgpt"
-            # "chatgpt-classic"
+            "codexbar"
+            "codex"
+            "chatgpt"
+            "chatgpt-classic"
 
             # daily
             "google-chrome"
-            # "obsidian"
+            "eudic"
+            "ticktick"
+            "obsidian"
+            "nutstore"
         ];
     };
 }

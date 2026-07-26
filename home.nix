@@ -114,13 +114,41 @@ in
     enable = true;
 
     settings = {
-      user = {
-        name = "weijianduan";
-        email = "weijian.duan@inspiregroup.com";
-      };
+      include.path = "~/.config/git/corp";
+      includeIf."gitdir:~/d/".path = "~/.config/git/personal";
 
       init.defaultBranch = "main";
     };
+  };
+
+  home.file.".config/git/corp".text = ''
+    [user]
+      name = weijianduan
+      email = weijian.duan@inspiregroup.com
+  '';
+
+  home.file.".config/git/personal".text = ''
+    [user]
+      name = weijianduan
+      email = weijianduan0302@gmail.com
+  '';
+
+  programs.ssh = {
+    enable = true;
+    enableDefaultConfig = false;
+
+    settings."*" = { };
+
+    extraConfig = ''
+      Host github-personal
+          HostName github.com
+          User git
+          IdentityFile ~/.ssh/id_ed25519_personal
+          IdentitiesOnly yes
+          AddKeysToAgent yes
+          IgnoreUnknown UseKeychain
+          UseKeychain yes
+    '';
   };
 
   programs.starship = {
@@ -176,10 +204,10 @@ in
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.snipaste/config.ini";
 
   # Global AGENTS.md
-  # home.file.".claude/CLAUDE.md".source =
-  #   config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/AGENTS.md";
-  # home.file.".codex/AGENTS.md".source =
-  #   config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/AGENTS.md";
-  # home.file.".config/opencode/AGENTS.md".source =
-  #   config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/AGENTS.md";
+  home.file.".claude/CLAUDE.md".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/AGENTS.md";
+  home.file.".codex/AGENTS.md".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/AGENTS.md";
+  home.file.".config/opencode/AGENTS.md".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/AGENTS.md";
 }
