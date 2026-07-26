@@ -19,6 +19,7 @@
         # };
 
         dock = {
+          orientation = "left";
           autohide = true;
           tilesize = 48;
           show-recents = false;
@@ -30,6 +31,8 @@
 
             # { app = "/Applications/Obsidian.app"; }
             { app = "/Applications/WezTerm.app"; }
+
+            { spacer = { small = true; }; }
           ];
 
         };
