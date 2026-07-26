@@ -66,6 +66,9 @@ in
 
       export SDKMAN_DIR="$HOME/.sdkman"
       [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+      # Local, mutable overrides that are intentionally not managed by Nix.
+      [[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
     '';
 
     shellAliases = {

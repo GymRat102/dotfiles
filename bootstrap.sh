@@ -1,13 +1,21 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# This script currently handles username personalization only.
+# This script currently handles username personalization and local shell setup.
 # It could later install Nix, create the ~/.dotfiles symlink, and run the first
 # nix-darwin switch, but those actions intentionally do not belong here yet.
 
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
 REAL_USER="$(whoami)"
 FLAKE_USER="$(sed -nE 's/^[[:space:]]*user = "([^"]+)";.*/\1/p' "$DIR/flake.nix" | head -n1)"
+ZSHRC_LOCAL="$HOME/.zshrc.local"
+
+if [ ! -e "$ZSHRC_LOCAL" ]; then
+  touch "$ZSHRC_LOCAL"
+  echo "Created $ZSHRC_LOCAL."
+else
+  echo "$ZSHRC_LOCAL already exists."
+fi
 
 if [ -z "$FLAKE_USER" ]; then
   echo "Could not find the single \"user =\" line in flake.nix."
