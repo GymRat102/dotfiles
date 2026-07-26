@@ -8,16 +8,22 @@ DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
 DOTFILES_LINK="$HOME/.dotfiles"
 ZSHRC_LOCAL="$HOME/.zshrc.local"
 SDKMAN_DIR_PATH="$HOME/.sdkman"
+NIX_DAEMON_PROFILE="/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh"
 
 echo "==> Step 1: Determinate Nix"
+# Nix may already be installed while the current shell has not loaded it yet.
+if ! command -v nix >/dev/null 2>&1 && [ -r "$NIX_DAEMON_PROFILE" ]; then
+  # shellcheck disable=SC1090
+  . "$NIX_DAEMON_PROFILE"
+fi
+
 if command -v nix >/dev/null 2>&1; then
-  echo "    Nix already exists, skipping installation."
+  echo "    Nix already exists; checking its distribution."
 else
   curl --proto '=https' --tlsv1.2 -sSf -L \
     https://install.determinate.systems/nix |
     sh -s -- install --no-confirm
 
-  NIX_DAEMON_PROFILE="/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh"
   if [ ! -r "$NIX_DAEMON_PROFILE" ]; then
     echo "Determinate Nix was installed, but $NIX_DAEMON_PROFILE is unavailable." >&2
     exit 1
@@ -32,7 +38,24 @@ if [ -z "$NIX_BIN" ]; then
   echo "Nix is unavailable after installation." >&2
   exit 1
 fi
-echo "    Using $("$NIX_BIN" --version)."
+
+NIX_VERSION="$("$NIX_BIN" --version 2>/dev/null || true)"
+if [ -z "$NIX_VERSION" ]; then
+  echo "Unable to determine the Nix distribution from $NIX_BIN." >&2
+  exit 1
+fi
+
+case "$NIX_VERSION" in
+  *"Determinate Nix"*)
+    echo "    Using $NIX_VERSION."
+    ;;
+  *)
+    echo "An existing non-Determinate Nix installation was found: $NIX_VERSION" >&2
+    echo "This repo expects Determinate Nix because configuration.nix sets nix.enable = false." >&2
+    echo "Migrate or uninstall the existing Nix installation manually, then run bootstrap again." >&2
+    exit 1
+    ;;
+esac
 
 echo "==> Step 2: link this repo at ~/.dotfiles"
 if [ -e "$DOTFILES_LINK" ] && [ "$DIR" -ef "$DOTFILES_LINK" ]; then
