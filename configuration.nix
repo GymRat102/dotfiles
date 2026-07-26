@@ -20,7 +20,7 @@
 
         dock = {
           autohide = true;
-          tilesize = 36;
+          tilesize = 48;
           show-recents = false;
 
           persistent-apps = [

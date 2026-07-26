@@ -116,7 +116,7 @@ in
     settings = {
       user = {
         name = "weijianduan";
-        email = "weijianduan0302@gmail.com";
+        email = "weijian.duan@inspiregroup.com";
       };
 
       init.defaultBranch = "main";
