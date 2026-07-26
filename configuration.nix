@@ -21,7 +21,7 @@
         WindowManager = {
           StandardHideWidgets = true;
           StageManagerHideWidgets = true;
-        }
+        };
 
         dock = {
           orientation = "left";
