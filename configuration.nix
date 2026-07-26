@@ -52,8 +52,6 @@
             "git-delta" # used by lazygit for better diff
             "herdr" # modern agentic tmux
             "fx" # terminal json viewer
-            "zsh-autosuggestions" # zsh plugin
-            "zsh-syntax-highlighting" # zsh plugin
             "zoxide" # better cd
             "emacs" # secondary editor than vim
             "neovim" # modern vim
