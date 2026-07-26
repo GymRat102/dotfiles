@@ -170,6 +170,9 @@ in
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/herdr";
   home.file.".config/lazygit".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/lazygit";
+  home.file.".config/karabiner".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/karabiner";
+
   # Global AGENTS.md
   home.file.".claude/CLAUDE.md".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/AGENTS.md";
