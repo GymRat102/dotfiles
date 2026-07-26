@@ -45,11 +45,31 @@
             "python@3.14" # python
             "kimi-code" # kimi coding agent
             "rbenv" # ruby version manager
+            "mole" # tw93's awesome mac storage cleaner
+            "llm" # simon willison's cli llm
+            "tree" # print cli dir tree
         ];
         casks = [
-            "wezterm"
+            # utilities
             "stats"
+            "karabiner-elelemts"
+            "rectangle"
+            "hiddenbar"
+            "snipaste"
+            "raycast"
+
+            # devtool
+            "wezterm"
             "claude-code"
+            "codexbar"
+            "codex"
+            "chatgpt"
+            "chatgpt-classic"
+
+            # daily
+            "thebrowsercompany-dia"
+            "google-chrome"
+            "obsidian"
         ];
     };
 }
