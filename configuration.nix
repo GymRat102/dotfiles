@@ -18,6 +18,11 @@
         #     AppleInterfaceStyle = "Dark";
         # };
 
+        WindowManager = {
+          StandardHideWidgets = true;
+          StageManagerHideWidgets = true;
+        }
+
         dock = {
           orientation = "left";
           autohide = false;
