@@ -4,6 +4,11 @@
 # Run this once. Use ./rebuild.sh for later changes.
 set -euo pipefail
 
+if (( EUID == 0 )); then
+  echo "Run ./bootstrap.sh as your normal user, without sudo." >&2
+  exit 1
+fi
+
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
 DOTFILES_LINK="$HOME/.dotfiles"
 ZSHRC_LOCAL="$HOME/.zshrc.local"
