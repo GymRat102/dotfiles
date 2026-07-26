@@ -103,9 +103,6 @@ in
   home.sessionPath = [
     "$HOME/.cargo/bin"
     "$HOME/.amp/bin"
-
-    "/Applications/IntelliJ IDEA.app/Contents/MacOS"
-    "/usr/local/mysql-9.2.0-macos15-arm64/bin/"
   ];
 
   programs.zoxide = {
