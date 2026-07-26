@@ -17,7 +17,22 @@
         NSGlobalDomain = {
             AppleInterfaceStyle = "Dark";
         };
-        dock.autohide = false;
+
+        dock = {
+          autohide = false;
+          show-recents = false;
+
+          persistent-apps = [
+            { app = "/Applications/ChatGPT.app"; }
+
+            { spacer = { small = true; }; }
+
+            { app = "/Applications/Obsidian.app"; }
+            { app = "/Applications/WezTerm.app"; }
+          ];
+
+        };
+
         trackpad.Clicking = true;          # tap to click
     };
 
@@ -52,7 +67,7 @@
         casks = [
             # utilities
             "stats"
-            "karabiner-elelemts"
+            "karabiner-elements"
             "rectangle"
             "hiddenbar"
             "snipaste"
@@ -67,7 +82,6 @@
             "chatgpt-classic"
 
             # daily
-            "thebrowsercompany-dia"
             "google-chrome"
             "obsidian"
         ];
