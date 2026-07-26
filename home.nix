@@ -1,12 +1,12 @@
-{ config, pkgs, ... }:
+{ config, pkgs, user, ... }:
 
 let
   dotfiles = "${config.home.homeDirectory}/.dotfiles";
 in
 
 {
-  home.username = "weijianduan";
-  home.homeDirectory = "/Users/weijianduan";
+  home.username = user;
+  home.homeDirectory = "/Users/${user}";
   home.stateVersion = "24.11";
 
   #### Nix will install these for me

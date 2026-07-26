@@ -6,7 +6,7 @@ This repo is a follow along to Kun Chen's tutorial of setting up reproducible de
 ## Todos before I stablize this config as my own
 
 **Nix**
-- [ ] `whoami` output is hardcoded in multiple places now (#1)
+- [x] macOS username is configured once in `flake.nix`; `bootstrap.sh` checks it against `whoami`
 - [ ] macOS setup not done
     - darkmode incompatible with WeChat
 - some existing config file not migrate yet
@@ -25,4 +25,3 @@ This repo is a follow along to Kun Chen's tutorial of setting up reproducible de
 - [ ] can `|` be used as shortcut key?
 - [ ] vim tmux navigator can't be used in herdr now
 - [ ] need some crash course on herdr basics
-
