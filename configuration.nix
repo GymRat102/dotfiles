@@ -14,9 +14,9 @@
     system.stateVersion = 6;
 
     system.defaults = {
-        NSGlobalDomain = {
-            AppleInterfaceStyle = "Dark";
-        };
+        # NSGlobalDomain = {
+        #     AppleInterfaceStyle = "Dark";
+        # };
 
         dock = {
           autohide = false;
@@ -55,12 +55,12 @@
             "zoxide" # better cd
             "emacs" # secondary editor than vim
             "neovim" # modern vim
-            "python@3.14" # python
-            "kimi-code" # kimi coding agent
-            "rbenv" # ruby version manager
-            "mole" # tw93's awesome mac storage cleaner
-            "llm" # simon willison's cli llm
-            "tree" # print cli dir tree
+            # "python@3.14" # python
+            # "kimi-code" # kimi coding agent
+            # "rbenv" # ruby version manager
+            # "mole" # tw93's awesome mac storage cleaner
+            # "llm" # simon willison's cli llm
+            # "tree" # print cli dir tree
             "ripgrep" # text search dependency
             "lazygit" # git in cli
         ];
@@ -71,19 +71,19 @@
             "rectangle"
             "hiddenbar"
             "snipaste"
-            "raycast"
+            # "raycast"
 
             # devtool
             "wezterm"
-            "claude-code"
-            "codexbar"
-            "codex"
-            "chatgpt"
-            "chatgpt-classic"
+            # "claude-code"
+            # "codexbar"
+            # "codex"
+            # "chatgpt"
+            # "chatgpt-classic"
 
             # daily
             "google-chrome"
-            "obsidian"
+            # "obsidian"
         ];
     };
 }

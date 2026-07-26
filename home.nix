@@ -37,9 +37,9 @@ in
       }
     ];
 
-    profileExtra = ''
-      eval "$(/opt/homebrew/bin/rbenv init - --no-rehash zsh)"
-    '';
+    # profileExtra = ''
+    #   eval "$(/opt/homebrew/bin/rbenv init - --no-rehash zsh)"
+    # '';
 
     initContent = ''
       bindkey '^f' autosuggest-accept # tab accept auto-suggest
@@ -64,8 +64,8 @@ in
       zle -N edit-command-line
       bindkey "^X^E" edit-command-line
 
-      export SDKMAN_DIR="$HOME/.sdkman"
-      [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+      # export SDKMAN_DIR="$HOME/.sdkman"
+      # [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
       # Local, mutable overrides that are intentionally not managed by Nix.
       [[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
@@ -75,8 +75,8 @@ in
       vim = "nvim";
       vi = "nvim";
 
-      python = "python3";
-      pip = "pip3";
+      # python = "python3";
+      # pip = "pip3";
 
       # basics
       l = "ls -alFh";
@@ -90,8 +90,8 @@ in
       m = "git switch main";
 
       # agent
-      cc = "claude --dangerously-skip-permissions";
-      co = "codex --full-auto";
+      # cc = "claude --dangerously-skip-permissions";
+      # co = "codex --full-auto";
     };
   };
 
@@ -174,10 +174,10 @@ in
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/karabiner";
 
   # Global AGENTS.md
-  home.file.".claude/CLAUDE.md".source =
-    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/AGENTS.md";
-  home.file.".codex/AGENTS.md".source =
-    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/AGENTS.md";
-  home.file.".config/opencode/AGENTS.md".source =
-    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/AGENTS.md";
+  # home.file.".claude/CLAUDE.md".source =
+  #   config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/AGENTS.md";
+  # home.file.".codex/AGENTS.md".source =
+  #   config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/AGENTS.md";
+  # home.file.".config/opencode/AGENTS.md".source =
+  #   config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/AGENTS.md";
 }
