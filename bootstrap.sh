@@ -9,12 +9,37 @@ DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
 REAL_USER="$(whoami)"
 FLAKE_USER="$(sed -nE 's/^[[:space:]]*user = "([^"]+)";.*/\1/p' "$DIR/flake.nix" | head -n1)"
 ZSHRC_LOCAL="$HOME/.zshrc.local"
+SDKMAN_DIR_PATH="$HOME/.sdkman"
 
 if [ ! -e "$ZSHRC_LOCAL" ]; then
   touch "$ZSHRC_LOCAL"
   echo "Created $ZSHRC_LOCAL."
 else
   echo "$ZSHRC_LOCAL already exists."
+fi
+
+if [ ! -s "$SDKMAN_DIR_PATH/bin/sdkman-init.sh" ]; then
+  (
+    SDKMAN_INSTALL_HOME="$(mktemp -d)"
+    trap 'rm -rf "$SDKMAN_INSTALL_HOME"' EXIT
+
+    curl -fsSL https://get.sdkman.io \
+      -o "$SDKMAN_INSTALL_HOME/install-sdkman.sh"
+
+    HOME="$SDKMAN_INSTALL_HOME" \
+    ZDOTDIR="$SDKMAN_INSTALL_HOME" \
+    SDKMAN_DIR="$SDKMAN_DIR_PATH" \
+      bash "$SDKMAN_INSTALL_HOME/install-sdkman.sh"
+  )
+
+  if [ ! -s "$SDKMAN_DIR_PATH/bin/sdkman-init.sh" ]; then
+    echo "SDKMAN installation failed." >&2
+    exit 1
+  fi
+
+  echo "Installed SDKMAN in $SDKMAN_DIR_PATH."
+else
+  echo "SDKMAN already exists in $SDKMAN_DIR_PATH."
 fi
 
 if [ -z "$FLAKE_USER" ]; then
