@@ -22,6 +22,7 @@
         };
 
         WindowManager = {
+          EnableStandardClickToShowDesktop = false;
           StandardHideWidgets = true;
           StageManagerHideWidgets = true;
         };
