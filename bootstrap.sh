@@ -12,7 +12,6 @@ fi
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
 DOTFILES_LINK="$HOME/.dotfiles"
 ZSHRC_LOCAL="$HOME/.zshrc.local"
-SDKMAN_DIR_PATH="$HOME/.sdkman"
 NIX_DAEMON_PROFILE="/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh"
 
 echo "==> Step 1: Determinate Nix"
@@ -107,29 +106,7 @@ else
   echo "    $ZSHRC_LOCAL already exists."
 fi
 
-# if [ ! -s "$SDKMAN_DIR_PATH/bin/sdkman-init.sh" ]; then
-#   (
-#     SDKMAN_INSTALL_HOME="$(mktemp -d)"
-#     trap 'rm -rf "$SDKMAN_INSTALL_HOME"' EXIT
-# 
-#     curl --proto '=https' --tlsv1.2 -fsSL https://get.sdkman.io \
-#       -o "$SDKMAN_INSTALL_HOME/install-sdkman.sh"
-# 
-#     HOME="$SDKMAN_INSTALL_HOME" \
-#     ZDOTDIR="$SDKMAN_INSTALL_HOME" \
-#     SDKMAN_DIR="$SDKMAN_DIR_PATH" \
-#       bash "$SDKMAN_INSTALL_HOME/install-sdkman.sh"
-#   )
-# 
-#   if [ ! -s "$SDKMAN_DIR_PATH/bin/sdkman-init.sh" ]; then
-#     echo "SDKMAN installation failed." >&2
-#     exit 1
-#   fi
-# 
-#   echo "    Installed SDKMAN in $SDKMAN_DIR_PATH."
-# else
-#   echo "    SDKMAN already exists in $SDKMAN_DIR_PATH."
-# fi
+"$DIR/scripts/install-sdkman.sh"
 
 echo "==> Step 5: first nix-darwin switch"
 # darwin-rebuild is not available on a fresh Mac, so run the 26.05 tool
