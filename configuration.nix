@@ -101,6 +101,7 @@
             "hiddenbar"
             "snipaste"
             "raycast"
+            "homerow"
 
             # devtool
             "wezterm"
@@ -109,6 +110,7 @@
             "codex"
             "chatgpt"
             "chatgpt-classic"
+            "docker"
 
             # daily
             "google-chrome"
