@@ -85,13 +85,15 @@
             "emacs" # secondary editor than vim
             "neovim" # modern vim
             # "python@3.14" # python
-            # "kimi-code" # kimi coding agent
+            "kimi-code" # kimi coding agent
             # "rbenv" # ruby version manager
             # "mole" # tw93's awesome mac storage cleaner
             # "llm" # simon willison's cli llm
             # "tree" # print cli dir tree
             "ripgrep" # text search dependency
             "lazygit" # git in cli
+            "pi-coding-agent" # pi agent
+            "azure-cli"
         ];
         casks = [
             # utilities
