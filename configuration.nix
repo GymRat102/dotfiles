@@ -109,6 +109,7 @@
             # devtool
             "wezterm"
             # "claude-code"
+            "grok-build"
             "codexbar"
             "codex"
             "chatgpt"
