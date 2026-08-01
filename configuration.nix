@@ -93,7 +93,8 @@
             "ripgrep" # text search dependency
             "lazygit" # git in cli
             "pi-coding-agent" # pi agent
-            "azure-cli"
+            "azure-cli" # azure cli
+            "glow" # terminal markdown reader
         ];
         casks = [
             # utilities
