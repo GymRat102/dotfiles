@@ -38,6 +38,8 @@ g.matchparen_disable_cursor_hl = 1
 
 -- Folding
 o.foldmethod = "indent"
+o.foldlevelstart = 99
+o.foldlevel = 99
 
 -- Clipboard
 o.clipboard = "unnamedplus"
