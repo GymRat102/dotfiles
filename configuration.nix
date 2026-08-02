@@ -86,6 +86,7 @@
             "neovim" # modern vim
             # "python@3.14" # python
             "kimi-code" # kimi coding agent
+            "opencode"
             # "rbenv" # ruby version manager
             # "mole" # tw93's awesome mac storage cleaner
             # "llm" # simon willison's cli llm
@@ -108,7 +109,7 @@
 
             # devtool
             "wezterm"
-            # "claude-code"
+            "claude-code"
             "grok-build"
             "codexbar"
             "codex"
