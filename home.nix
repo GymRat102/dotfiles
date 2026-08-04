@@ -72,8 +72,8 @@ in
       vim = "nvim";
       vi = "nvim";
 
-      # python = "python3";
-      # pip = "pip3";
+      python = "python3.14";
+      pip = "pip3.14";
 
       # basics
       l = "ls -alFh";

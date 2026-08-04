@@ -84,7 +84,7 @@
             "zoxide" # better cd
             "emacs" # secondary editor than vim
             "neovim" # modern vim
-            # "python@3.14" # python
+            "python@3.14" # python
             "kimi-code" # kimi coding agent
             "opencode"
             # "rbenv" # ruby version manager
