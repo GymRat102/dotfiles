@@ -42,6 +42,10 @@ in
     # '';
 
     initContent = ''
+      # Keep interactive zsh PATH under Home Manager, without relying on session reload.
+      path=("$HOME/.local/bin" "$HOME/.cargo/bin" "$HOME/.amp/bin" $path)
+      export PATH
+
       bindkey '^f' autosuggest-accept # tab accept auto-suggest
 
       # history
@@ -97,10 +101,12 @@ in
     VISUAL = "nvim";
   };
 
-  home.sessionPath = [
-    "$HOME/.cargo/bin"
-    "$HOME/.amp/bin"
-  ];
+  # PATH for interactive zsh is managed in programs.zsh.initContent above.
+  # home.sessionPath = [
+  #   "$HOME/.local/bin"
+  #   "$HOME/.cargo/bin"
+  #   "$HOME/.amp/bin"
+  # ];
 
   programs.zoxide = {
     enable = true;
