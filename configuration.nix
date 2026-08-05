@@ -96,6 +96,8 @@
             "pi-coding-agent" # pi agent
             "azure-cli" # azure cli
             "glow" # terminal markdown reader
+            "yt-dlp"
+            "ffmpeg"
         ];
         casks = [
             # utilities
