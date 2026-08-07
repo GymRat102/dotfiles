@@ -73,6 +73,10 @@
     homebrew = {
         enable = true;
 
+        taps = [
+            "hashicorp/tap"
+        ];
+
         onActivation.cleanup = "none"; # `zap` remove anything not listed here
         onActivation.autoUpdate = true; # update homebrew index
         onActivation.upgrade = false; # but don't update software
@@ -84,6 +88,8 @@
             "zoxide" # better cd
             "emacs" # secondary editor than vim
             "neovim" # modern vim
+            "hashicorp/tap/terraform" # infrastructure as code CLI and formatter
+            "terraform-ls" # Terraform language server for Neovim
             "python@3.14" # python
             "kimi-code" # kimi coding agent
             "opencode"
